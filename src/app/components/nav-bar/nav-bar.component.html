@@ -1,0 +1,65 @@
+<div
+  class="w-[96%] mx-[2%] my-3 lg:w-2/3 lg:m-0 xl:w-3/5 flex justify-between items-center px-2 py-1 md:px-4 md:py-0 xl:px-10 relative lg:absolute md:top-5 lg:right-10 z-50 backdrop-blur-xl border-2 border-zinc-700 rounded-lg md:rounded-full"
+>
+  <div class="logo w-[130px] h-[40px] md:w-[220px] md:h-[70px] md:flex-none">
+    <img src="logo.png" alt="logo" class="w-full h-full object-cover" />
+  </div>
+
+  <div (click)="changeToggle()" class="flex-1 text-2xl text-right md:hidden">
+    <i class="ri-menu-2-line"></i>
+  </div>
+
+  <nav
+    class="absolute top-14 right-0 md:relative md:top-0 md:right-0 w-[200px] md:w-[420px] lg:w-[450px] flex flex-col gap-4 md:gap-0 md:flex-row justify-between md:items-center overflow-hidden bg-zinc-700 bg-opacity-70 backdrop-blur-lg md:bg-inherit md:p-3 rounded-lg transition-all duration-700 md:h-auto z-50"
+    [ngClass]="{ 'h-0 p-0': toggle, 'h-[200px] p-3': !toggle }"
+  >
+    <a
+      routerLink="/"
+      routerLinkActive="active bg-zinc-800 md:bg-transparent"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="setToggle()"
+      class="flex md:justify-center items-center gap-1 hover:bg-zinc-800 md:hover:bg-inherit px-4 py-2 shrink-0 rounded-lg"
+    >
+      <div
+        class="icon text-2xl px-1 rounded-full md:opacity-0 transition-all duration-500"
+      >
+        <i class="ri-home-2-line"></i>
+      </div>
+      <div class="text text-nowrap transition-all duration-500">
+        <p>Home</p>
+      </div>
+    </a>
+    <a
+      routerLink="/add-workouts"
+      routerLinkActive="active bg-zinc-800 md:bg-transparent"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="setToggle()"
+      class="flex md:justify-center items-center gap-1 hover:bg-zinc-800 md:hover:bg-inherit px-4 py-2 shrink-0 rounded-lg"
+    >
+      <div
+        class="icon text-2xl px-1 rounded-full md:opacity-0 transition-all duration-500"
+      >
+        <i class="ri-add-circle-line"></i>
+      </div>
+      <div class="text text-nowrap transition-all duration-500">
+        <p>Add Workouts</p>
+      </div>
+    </a>
+    <a
+      routerLink="/explore"
+      routerLinkActive="active bg-zinc-800 md:bg-transparent"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="setToggle()"
+      class="flex md:justify-center items-center gap-1 hover:bg-zinc-800 md:hover:bg-inherit px-4 py-2 shrink-0 rounded-lg"
+    >
+      <div
+        class="icon text-2xl px-1 rounded-full md:opacity-0 transition-all duration-500"
+      >
+        <i class="ri-compass-line"></i>
+      </div>
+      <div class="text text-nowrap transition-all duration-500">
+        <p>Explore</p>
+      </div>
+    </a>
+  </nav>
+</div>

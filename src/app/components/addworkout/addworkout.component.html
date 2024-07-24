@@ -1,0 +1,84 @@
+<div
+  class="h-screen relative flex justify-center items-center px-2 py-1 md:px-5 md:py-0 xl:px-20"
+>
+  <div
+    class="z-50 transition-all duration-700 px-4 py-2 absolute top-10 min-w-[300px] h-[40px] text-white font-medium rounded-lg text-center"
+    [ngClass]="{
+      '-left-2': msgBox.message,
+      '-left-[100%]': !msgBox.message,
+      'bg-green-600': msgBox.color,
+      'bg-red-600': !msgBox.color
+    }"
+  >
+    <p>
+      {{ msgBox.message }}
+    </p>
+  </div>
+
+  <div
+    class="absolute bottom-0 -right-20 md:right-0 h-[450px] md:h-[300px] lg:h-[550px] w-[300px] md:w-[300px] lg:w-[500px] rounded-[50%] blur-[120px] opacity-50 bg-red-600"
+  ></div>
+
+  <div
+    class="absolute top-0 -translate-y-[30%] md:-translate-y-[20%] left-0 h-[80px] w-[200px] md:w-[300px] lg:w-[500px] rounded-[50%] blur-[120px] opacity-100 bg-red-600"
+  ></div>
+
+  <form
+    [formGroup]="workoutForm"
+    (submit)="onSubmit()"
+    action=""
+    class="text-zinc-300 flex flex-col justify-center items-center bg-zinc-700 p-5 w-[400px] rounded-xl gap-5 z-40 bg-opacity-40 backdrop-blur-2xl"
+  >
+    <div>
+      <h1
+        class="text-[28px] font-bold text-transparent text-stroke-1 text-stroke-zinc-200"
+      >
+        Add WorkOut
+      </h1>
+    </div>
+
+    <input
+      formControlName="name"
+      type="text"
+      placeholder="User Name"
+      class="px-4 py-2 bg-transparent outline-none border-2 border-zinc-700 w-full rounded-lg"
+    />
+    <select
+      formControlName="type"
+      class="round outline-none px-3 py-2 w-full border-2 border-zinc-700 bg-transparent text-zinc-300 rounded-lg"
+    >
+      <option class="text-[16px] m-2 opacity-25 bg-zinc-700" disabled selected>
+        Select Workout
+      </option>
+      <option value="Gym" class="text-[16px] m-2 opacity-25 bg-zinc-700">
+        Gym
+      </option>
+      <option value=" Yoga" class="text-[16px] m-2 opacity-25 bg-zinc-700">
+        Yoga
+      </option>
+      <option value="Running" class="text-[16px] m-2 opacity-25 bg-zinc-700">
+        Running
+      </option>
+      <option value="Meditation" class="text-[16px] m-2 opacity-25 bg-zinc-700">
+        Meditation
+      </option>
+      <option value=" Pushups" class="text-[16px] m-2 opacity-25 bg-zinc-700">
+        Pushups
+      </option>
+    </select>
+    <input
+      formControlName="duration"
+      type="number"
+      placeholder="Minutes"
+      class="px-4 py-2 bg-transparent outline-none border-2 border-zinc-700 w-full rounded-lg"
+    />
+
+    <div class="w-full">
+      <input
+      type="submit"
+      value="Add"
+      class="bg-red-600 px-10 py-2 font-medium text-md rounded-lg"
+    />
+    </div>
+  </form>
+</div>

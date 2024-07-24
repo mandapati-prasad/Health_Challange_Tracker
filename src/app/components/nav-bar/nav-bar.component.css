@@ -1,0 +1,25 @@
+nav a:hover .icon {
+  @apply md:bg-red-600 text-zinc-400 md:text-zinc-200 opacity-100;
+}
+
+nav a:hover .text {
+  @apply text-zinc-400;
+}
+
+nav a:hover .text {
+  @apply scale-110;
+}
+
+.active .icon {
+  @apply md:bg-red-600 text-zinc-400 md:text-zinc-200 opacity-100;
+}
+
+.active .text {
+  @apply text-zinc-400;
+}
+
+/* nav a div{
+ width: 30px;
+ height: 30px;
+ margin-right: 5px;
+} */

@@ -1,0 +1,47 @@
+<div
+  class="min-h-screen lg:h-screen relative flex justify-center items-center px-2 py-2 md:px-5 md:py-10 xl:px-20 lg:overflow-hidden"
+>
+  <div
+    class="absolute bottom-0 right-0 h-[450px] md:h-[400px] lg:h-[550px] w-[300px] md:w-[300px] lg:w-[500px] rounded-[50%] blur-[120px] opacity-80 bg-red-600"
+  ></div>
+  <div
+    class="absolute top-0 -translate-y-[40%] md:-translate-y-[20%] left-0 h-[80px] w-[200px] md:w-[300px] lg:w-[500px] rounded-[50%] blur-[120px] opacity-100 bg-red-600"
+  ></div>
+
+  <div
+    class="w-full h-auto lg:h-full mt-0 md:mt-0 flex flex-col lg:flex-row gap-4 p-2 md:p-8 xl:gap-6 justify-start items-start z-20 rounded-xl backdrop-blur-md bg-zinc-900 bg-opacity-25 border-2 border-zinc-700"
+  >
+    <div
+      class="bg-zinc-700 flex-1 px-5 py-6 rounded-xl bg-opacity-40 flex flex-col gap-2"
+    >
+      @if (user) {
+      <h1 class="text-lg md:text-xl lg:text-2xl font-medium capitalize">{{ user.name }}</h1>
+      <p class="text-sm md:text-md lg:text-lg font-medium text-red-600">
+        Totol WorkOuts :
+        <span class="text-white font-light"> {{ user.workouts.length }} </span>
+      </p>
+      <p class="text-sm md:text-md lg:text-lg font-medium flex gap-5 text-red-600">
+        Workouts:
+        <span
+          class="font-light text-white w-[150px] md:w-[200px] h-[150px] px-4 py-2 bg-zinc-500 bg-opacity-40 rounded-xl overflow-auto"
+        >
+          @for (item of user.workouts; track $index) {
+          <p>{{ $index + 1 }}. {{ item.type }}</p>
+          }
+        </span>
+      </p>
+      <p class="text-sm md:text-md lg:text-lg font-medium text-red-600">
+        Total Minutes:
+        <span class="font-light text-white">{{ getTotlaMinutes() }}</span>
+      </p>
+      }
+    </div>
+
+    <div class="w-full h-[300px] lg:h-full flex justify-center items-center">
+      <div class="w-full h-full lg:h-[400px] lg:w-[550px] xl:w-[800px] flex justify-center items-center p-4 border-2 border-red-900 rounded-xl bg-zinc-900 bg-opacity-20 md:shadow-[0px_0px_20px] md:shadow-red-800">
+        <canvas id="myChart">{{ chart }}</canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
