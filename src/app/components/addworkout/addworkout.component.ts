@@ -80,5 +80,6 @@ export class AddworkoutComponent {
     }
 
     localStorage.setItem('user_Data', JSON.stringify(userData));
+    this.router.navigate(['/explore']);
   }
 }
