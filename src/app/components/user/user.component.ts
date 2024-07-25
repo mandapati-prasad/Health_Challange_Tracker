@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
 
 interface Workouts {
@@ -21,25 +21,24 @@ interface User {
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  id: number = 0;
+  userId: number = 0;
   user: User | null = null;
   public chart: any;
 
-  constructor(private router: Router) {
+  constructor(private router: ActivatedRoute) {
     Chart.register(...registerables);
   }
 
   ngOnInit() {
-    // this.id = +this.router.snapshot.params['id'];
-    this.id = +this.router.url.split('/')[1];
-    let userData = JSON.parse(localStorage.getItem('user_Data') || '[]');
-    this.user =
-      userData.find((user: { id: number }) => user.id === this.id) || null;
+    this.router.params.subscribe((params:any) => {
+      this.userId = +params['id']; 
+      const userData = JSON.parse(localStorage.getItem('user_Data') || '[]');
+      this.user = userData.find((user: User) => user.id === this.userId) || null;
+    });
     this.createChart();
   }
 
   createChart() {
-    console.log(this.user?.workouts.map((u) => u.minutes));
     this.chart = new Chart('myChart', {
       type: 'bar',
       data: {
@@ -55,7 +54,6 @@ export class UserComponent {
         ],
       },
       options: {
-        // aspectRatio: 1.5,
         responsive: true,
         maintainAspectRatio: false,
         color: 'white',
@@ -65,10 +63,10 @@ export class UserComponent {
             align: 'end',
             labels: {
               font: {
-                size:15
-              }
-            }
-          }
+                size: 15,
+              },
+            },
+          },
         },
         scales: {
           y: {

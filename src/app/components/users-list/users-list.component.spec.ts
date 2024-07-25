@@ -38,6 +38,10 @@ describe('UsersListComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    localStorage.removeItem('user_Data');
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

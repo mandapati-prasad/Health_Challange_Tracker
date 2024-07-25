@@ -6,8 +6,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+  --heading:Oswald;
+}
+
 *{
- font-family: 'Poppins';
+ font-family: poppins;
 }
 
 ::-webkit-scrollbar {

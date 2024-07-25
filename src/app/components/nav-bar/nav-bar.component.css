@@ -2,6 +2,10 @@ nav a:hover .icon {
   @apply md:bg-red-600 text-zinc-400 md:text-zinc-200 opacity-100;
 }
 
+.text p{
+  font-family: var(--heading);
+}
+
 nav a:hover .text {
   @apply text-zinc-400;
 }
